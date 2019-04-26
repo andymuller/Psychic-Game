@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Psychic</title>
+  
+</head>
+
+<body>
+  <div>
+    <p id="instructions">Guess what letter I am thinking of.</p>
+    <p id="wins">Wins: <span id="win-count"></span></p>
+    <p id="losses">Losses: <span id="loss-count"></span></p>
+    <p id="chances-left">Guesses left: <span id="countdown"></span></p>
+    <p id="guesses">Your guesses so far: <span id="guess-count"></span></p>
+    <script>
+    var letterList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var wins = 0;
+var losses = 0;
+var countdown = 5;
+var winCount = document.getElementById("win-count");
+var lossCount = document.getElementById("loss-count");
+var chanceCount = document.getElementById("countdown");
+var guessCount = document.getElementById("guess-count");
+
+document.onkeyup = function(event){
+    var userGuess = event.key;
+    var computerGuess = letterList[Math.floor(Math.random() * letterList.length)];
+    if ((userGuess === "a") || (userGuess === "b") || (userGuess === "c") || (userGuess === "d") || (userGuess === "e") || (userGuess === "f") || (userGuess === "g") || (userGuess === "h") || (userGuess === "i") || (userGuess === "j") || (userGuess === "k") || (userGuess === "l") || (userGuess === "m") || (userGuess === "n") || (userGuess === "o") || (userGuess === "p") || (userGuess === "q") || (userGuess === "r") || (userGuess === "s") || (userGuess === "t") || (userGuess === "u") || (userGuess === "v") || (userGuess === "w") || (userGuess === "x") || (userGuess === "y") || (userGuess === "z"))
+        if (userGuess === computerGuess){
+            wins++;
+            countdown = 5;
+        }
+        else if (userGuess !== computerGuess){
+            guessCount + event.key;
+            countdown -= 1;
+        }
+    if (countdown === 0){
+        losses++;
+        countdown = 5;
+    }
+    winCount.textContent = wins;
+    lossCount.textContent = losses;
+    chanceCount.textContent = countdown;
+    guessCount.textContent = userGuess;
+}
+</script>
+  </div>
+
+</body>
+
+</html>
